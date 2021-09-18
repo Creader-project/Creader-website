@@ -5,7 +5,7 @@ import book_detail from "../views/book_detail.vue";
 import about_us from "../views/about_us.vue";
 
 import user_book_case from "../views/user_book_case.vue";
-
+import bad_request from "../views/Bad_request.vue";
 // import store from '../store/index'
 
 const routes = createRouter({
@@ -15,6 +15,11 @@ const routes = createRouter({
             path: '/',
             name: 'Home',
             component: Home
+        },
+        {
+            path: '/404_bad_request',
+            name: 'bad_request',
+            component: bad_request
         },
         {
             path: '/login',

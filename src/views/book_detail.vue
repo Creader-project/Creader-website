@@ -1,64 +1,63 @@
 <template>
-  <div class="container">
-    <div class="columns is-mobile">
-      <div class="column is-three-fifths is-offset-one-fifth">
-        <div class="columns">
-          <div class="column is-one-quarter">
-            <img/>
-          </div>
-          <div class="column">
-            <p>
-              {{ book_info.book_name }}
-            </p>
-            <p>
-              {{ book_info.added_time }}
-            </p>
-            <p>
-              {{ book_info.book_short_description }}
-            </p>
-            <p>
-              {{ book_info.book_description }}
-            </p>
-          </div>
-        </div>
-        <nav class="level my-4">
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading">Chapters</p>
-              <p class="title">{{ book_info.chapter_count }}</p>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading">Clicks</p>
-              <p class="title">{{ book_info.total_click }}</p>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading">Votes</p>
-              <p class="title">{{ book_info.total_vote }}</p>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading">Words</p>
-              <p class="title">{{ book_info.total_words }}</p>
-            </div>
-          </div>
-        </nav>
-        <div class="columns my-6">
-          <div class="column">
-            <div class="columns is-multiline">
-              <div v-for="(chapter, index) in chapters" v-bind:key="index" class="column is-half">
-                {{ chapter.chaptername }}
+  <el-row :gutter="20">
+    <el-col :span="12" :offset="6">
+      <el-row :gutter="24" class="book_detail">
+        <el-col :span="6">
+          <el-image
+              :src="url"
+              fit="none"
+          ></el-image>
+        </el-col>
+        <el-col :span="18" class="detail_header">
+          <el-container>
+            <el-header>
+              <div>
+                <p>Book Name</p>
+                <p>Book author</p>
+              </div>
+            </el-header>
+            <el-main>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum sagittis erat egestas malesuada. Cras sed porta magna, ut dapibus neque. Sed condimentum semper dolor, a pellentesque massa facilisis vitae. Vestibulum non neque metus. Duis dignissim dapibus lacus, eu dignissim neque molestie vitae. Suspendisse faucibus interdum efficitur. Praesent dignissim enim.
+              </p>
+            </el-main>
+            <nav class="level">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Tweets</p>
+                <p class="title">3,456</p>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Following</p>
+                <p class="title">123</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Followers</p>
+                <p class="title">456K</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Likes</p>
+                <p class="title">789</p>
+              </div>
+            </div>
+          </nav>
+            <el-footer style="width: auto">
+              <el-button type="primary" round>
+                <i class="el-icon-arrow-right el-icon--right"></i> Start Reading
+              </el-button>
+              <el-button type="info" round>+</el-button>
+            </el-footer>
+          </el-container>
+        </el-col>
+      </el-row>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
@@ -70,6 +69,7 @@ export default {
   data() {
     return {
       book_info: null,
+      url:'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
       chapters: [
         {
           bookName: 1,
@@ -114,4 +114,8 @@ export default {
 
 <style scoped>
 
+.detail_header{
+  text-align: left;
+  padding:20px 0px;
+}
 </style>
