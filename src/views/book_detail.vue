@@ -72,15 +72,15 @@
       </el-row>
       <el-row :gutter="24" style="text-align: justify">
         <el-col>
-          <div>
+          <el-main>
             <span>Detail</span>
             <el-divider direction="vertical"></el-divider>
             <span>Table of content</span>
-          </div>
+          </el-main>
         </el-col>
         <el-col>
           <el-main>
-            <h3 h3 class="title is-3">Tags</h3>
+            <h3 class="title is-3">Tags</h3>
             <el-space wrap>
               <el-tag type="success">标签二</el-tag>
               <el-tag type="success">标签二</el-tag>
@@ -88,7 +88,25 @@
               <el-tag type="success">标签二</el-tag>
             </el-space>
           </el-main>
+          <el-main class="is-centered">
+            <h3 class="title is-3">Our recommendations</h3>
+            <el-divider></el-divider>
+            <el-row :gutter="24" style="padding:20px">
+              <el-col v-for="i in 6" :span="4">
+                <div>
+                  <el-image
+                      :src="url"
+                      fit="none"
+                  ></el-image>
+                  <p class="title is-4">Book Name</p>
+                  <p class="subtitle is-5">Book author</p>
+                </div>
+              </el-col>
+            </el-row>
+          </el-main>
           <el-main>
+            <h3 class="title is-3">Comments</h3>
+            <el-divider></el-divider>
             <article class="media">
               <figure class="media-left">
                 <p class="image is-64x64">
@@ -135,7 +153,8 @@
                   <p>
                     <strong>Barbara Middleton</strong>
                     <br>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit
+                    blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
                     <br>
                     <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
                   </p>
@@ -152,7 +171,9 @@
                       <p>
                         <strong>Sean Brown</strong>
                         <br>
-                        Donec sollicitudin urna eget eros malesuada sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam blandit nisl a nulla sagittis, a lobortis leo feugiat.
+                        Donec sollicitudin urna eget eros malesuada sagittis. Pellentesque habitant morbi tristique
+                        senectus et netus et malesuada fames ac turpis egestas. Aliquam blandit nisl a nulla sagittis, a
+                        lobortis leo feugiat.
                         <br>
                         <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
                       </p>
@@ -171,7 +192,9 @@
                       <p>
                         <strong>Kayli Eunice </strong>
                         <br>
-                        Sed convallis scelerisque mauris, non pulvinar nunc mattis vel. Maecenas varius felis sit amet magna vestibulum euismod malesuada cursus libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus lacinia non nisl id feugiat.
+                        Sed convallis scelerisque mauris, non pulvinar nunc mattis vel. Maecenas varius felis sit amet
+                        magna vestibulum euismod malesuada cursus libero. Vestibulum ante ipsum primis in faucibus orci
+                        luctus et ultrices posuere cubilia Curae; Phasellus lacinia non nisl id feugiat.
                         <br>
                         <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
                       </p>
@@ -204,7 +227,7 @@
                 style="overflow:auto"
             >
               <div v-for="i in chapters" class="column is-one-quarter">
-                <span>{{i.bookName + 1}}</span>. <span>{{i.chaptername}}</span>
+                <span>{{ i.bookName + 1 }}</span>. <span>{{ i.chaptername }}</span>
               </div>
             </ul>
             <p v-if="loading">loading...</p>
@@ -226,9 +249,10 @@ export default {
     return {
       book_info: null,
       url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-      value:3.7,
-      loading:false,
+      value: 3.7,
+      loading: false,
       count: 5,
+      size: 50,
       chapters: [
         {
           bookName: 1,
@@ -264,7 +288,7 @@ export default {
           this.book_info = response.data
         })
   },
-  computed:{
+  computed: {
     noMore() {
       console.log(this.chapters.length)
       return this.count >= this.chapters.length
