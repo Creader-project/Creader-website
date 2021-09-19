@@ -12,48 +12,204 @@
           <el-container>
             <el-header>
               <div>
-                <p>Book Name</p>
-                <p>Book author</p>
+                <h1 class="title">Book Name</h1>
+                <h2 class="subtitle">Book author</h2>
               </div>
+              <el-rate
+                  v-model="value"
+                  disabled
+                  show-score
+                  text-color="#ff9900"
+                  score-template="{value}"
+              >
+              </el-rate>
             </el-header>
             <el-main>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum sagittis erat egestas malesuada. Cras sed porta magna, ut dapibus neque. Sed condimentum semper dolor, a pellentesque massa facilisis vitae. Vestibulum non neque metus. Duis dignissim dapibus lacus, eu dignissim neque molestie vitae. Suspendisse faucibus interdum efficitur. Praesent dignissim enim.
-              </p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin neque justo, sit amet
+                facilisis arcu ornare nec. Aliquam dolor sem, vulputate ac libero id, sollicitudin mattis mauris. Sed
+                iaculis quis felis ut accumsan. Duis id fermentum massa. Phasellus faucibus blandit nisi vestibulum
+                vulputate. Duis placerat viverra arcu, in gravida lorem porta nec. Nullam dictum ex id sapien gravida,
+                non fringilla ex pellentesque.</p>
             </el-main>
+            <el-divider></el-divider>
             <nav class="level">
-            <div class="level-item has-text-centered">
-              <div>
-                <p class="heading">Tweets</p>
-                <p class="title">3,456</p>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">View</p>
+                  <p class="title">3,456</p>
+                </div>
               </div>
-            </div>
-            <div class="level-item has-text-centered">
-              <div>
-                <p class="heading">Following</p>
-                <p class="title">123</p>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">Rating</p>
+                  <p class="title">123</p>
+                </div>
               </div>
-            </div>
-            <div class="level-item has-text-centered">
-              <div>
-                <p class="heading">Followers</p>
-                <p class="title">456K</p>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">Likes</p>
+                  <p class="title">456K</p>
+                </div>
               </div>
-            </div>
-            <div class="level-item has-text-centered">
-              <div>
-                <p class="heading">Likes</p>
-                <p class="title">789</p>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">Chapters</p>
+                  <p class="title">789</p>
+                </div>
               </div>
-            </div>
-          </nav>
-            <el-footer style="width: auto">
-              <el-button type="primary" round>
-                <i class="el-icon-arrow-right el-icon--right"></i> Start Reading
-              </el-button>
-              <el-button type="info" round>+</el-button>
-            </el-footer>
+            </nav>
+            <el-divider>
+              <el-footer class="book_button">
+                <el-button type="primary" round>
+                  <i class="el-icon-notebook-2 el-icon--right"></i> Start Reading
+                </el-button>
+                <el-button type="primary" round><i class="el-icon-plus el-icon--right"></i></el-button>
+                <el-button type="primary" round><i class="el-icon-share el-icon--right"></i></el-button>
+              </el-footer>
+            </el-divider>
           </el-container>
+        </el-col>
+      </el-row>
+      <el-row :gutter="24" style="text-align: justify">
+        <el-col>
+          <div>
+            <span>Detail</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>Table of content</span>
+          </div>
+        </el-col>
+        <el-col>
+          <el-main>
+            <h3 h3 class="title is-3">Tags</h3>
+            <el-space wrap>
+              <el-tag type="success">标签二</el-tag>
+              <el-tag type="success">标签二</el-tag>
+              <el-tag type="success">标签二</el-tag>
+              <el-tag type="success">标签二</el-tag>
+            </el-space>
+          </el-main>
+          <el-main>
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img src="https://bulma.io/images/placeholders/128x128.png">
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="field">
+                  <p class="control">
+                    <el-rate v-model="value1"></el-rate>
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                  </p>
+                </div>
+                <nav class="level">
+                  <div class="level-left">
+                    <div class="level-item">
+                      <a class="button is-info">Submit</a>
+                    </div>
+                  </div>
+                  <div class="level-right">
+                    <div class="level-item">
+                      <label class="checkbox">
+                        <input type="checkbox"> Press enter to submit
+                      </label>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </article>
+          </el-main>
+          <el-main>
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img src="https://bulma.io/images/placeholders/128x128.png">
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>Barbara Middleton</strong>
+                    <br>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+                    <br>
+                    <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
+                  </p>
+                </div>
+
+                <article class="media">
+                  <figure class="media-left">
+                    <p class="image is-48x48">
+                      <img src="https://bulma.io/images/placeholders/96x96.png">
+                    </p>
+                  </figure>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong>Sean Brown</strong>
+                        <br>
+                        Donec sollicitudin urna eget eros malesuada sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam blandit nisl a nulla sagittis, a lobortis leo feugiat.
+                        <br>
+                        <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="media">
+                  <figure class="media-left">
+                    <p class="image is-48x48">
+                      <img src="https://bulma.io/images/placeholders/96x96.png">
+                    </p>
+                  </figure>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong>Kayli Eunice </strong>
+                        <br>
+                        Sed convallis scelerisque mauris, non pulvinar nunc mattis vel. Maecenas varius felis sit amet magna vestibulum euismod malesuada cursus libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus lacinia non nisl id feugiat.
+                        <br>
+                        <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </article>
+          </el-main>
+          <el-main>
+            <div class="block" style="text-align: center">
+              <el-pagination
+                  @size-change="handleSizeChange"
+                  @current-change="handleCurrentChange"
+                  :current-page="currentPage4"
+                  :page-sizes="[100, 200, 300, 400]"
+                  :page-size="100"
+                  layout="total, sizes, prev, pager, next, jumper"
+                  :total="400"
+              >
+              </el-pagination>
+            </div>
+          </el-main>
+        </el-col>
+        <el-col>
+          <div class="infinite-list-wrapper" style="overflow:auto">
+            <ul
+                class="list columns is-multiline is-mobile has-text-centered	"
+                v-infinite-scroll="load"
+                style="overflow:auto"
+            >
+              <div v-for="i in chapters" class="column is-one-quarter">
+                <span>{{i.bookName + 1}}</span>. <span>{{i.chaptername}}</span>
+              </div>
+            </ul>
+            <p v-if="loading">loading...</p>
+            <p v-if="noMore">No More</p>
+          </div>
         </el-col>
       </el-row>
     </el-col>
@@ -69,7 +225,10 @@ export default {
   data() {
     return {
       book_info: null,
-      url:'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+      url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+      value:3.7,
+      loading:false,
+      count: 5,
       chapters: [
         {
           bookName: 1,
@@ -105,17 +264,40 @@ export default {
           this.book_info = response.data
         })
   },
+  computed:{
+    noMore() {
+      console.log(this.chapters.length)
+      return this.count >= this.chapters.length
+    },
+    disabled() {
+      return this.loading || this.noMore
+    },
+  },
   methods: {
-    method1() {
+    load() {
+
+      this.loading = true
+      setTimeout(() => {
+        this.count += 2
+        this.loading = false
+      }, 2000)
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
-.detail_header{
+.detail_header {
   text-align: left;
-  padding:20px 0px;
+  padding: 20px 0px;
+
+  .book_title {
+
+  }
+
+  .book_button {
+
+  }
 }
 </style>
