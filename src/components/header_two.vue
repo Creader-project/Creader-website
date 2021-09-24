@@ -3,7 +3,7 @@
     <div class="container is-fluid">
       <div class="navbar-brand">
         <a class="navbar-item" href="#">
-          <img alt="" class="image" src="bulma-plain-assets/logos/plainb-logo.svg" width="96px">
+          <img alt="" class="image"  width="96px">
         </a>
         <a aria-expanded="false" aria-label="menu" class="navbar-burger" role="button">
           <span aria-hidden="true"></span>
@@ -25,10 +25,19 @@
             </template>
           </el-input>
         </div>
-        <div class="navbar-item">
+        <div class="navbar-item" v-if="!login_is">
           <div class="buttons">
-            <a class="button" href="#">Sign In</a>
-            <a class="button is-primary" href="#">Sign Up</a>
+            <a class="button" href="#" @click="login">Sign In</a>
+            <a class="button" href="#">Sign Up</a>
+          </div>
+        </div>
+        <div class="navbar-item" v-else>
+          <div class="buttons">
+            <a class="button" href="#">Bookshelf</a>
+            <a class="button is-danger" href="#">Create</a>
+            <figure class="image is-48x48">
+              <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+            </figure>
           </div>
         </div>
 
@@ -39,7 +48,17 @@
 
 <script>
 export default {
-  name: "header_two"
+  name: "header_two",
+  data(){
+    return{
+      login_is:false
+    }
+  },
+  methods:{
+    login(){
+      this.login_is = true;
+    }
+  }
 }
 </script>
 

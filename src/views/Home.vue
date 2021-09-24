@@ -3,7 +3,7 @@
     <a v-if="$store.state.isAuthenticated" class="button is-primary">
       <router-link to="/plan">Plan</router-link>
     </a>
-
+    <header_two></header_two>
     <section class="section is-fixed-top">
       <div class="container">
         <div class="columns is-multiline is-centered">
@@ -105,11 +105,12 @@
 
 <script>
 // @ is an alias to /src
+import header_two from "../components/header_two.vue";
 import Footer_component from "../components/footer_component.vue";
 
 export default {
   name: 'Home',
-  components: {Footer_component},
+  components: {Footer_component, header_two},
   data() {
     return {
       activeItem: 'monetization'

@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import author_book_create from "../views/components/author_book_create.vue";
 import book_detail from "../views/book_detail.vue";
 import about_us from "../views/about_us.vue";
+import book_chatper from "../views/book_chatper.vue"
 
 import user_book_case from "../views/user_book_case.vue";
 import bad_request from "../views/Bad_request.vue";
@@ -81,6 +82,14 @@ const routes = createRouter({
             path: '/bookcase/',
             name: 'bookcase',
             component: user_book_case,
+            meta: {
+                requireLogin: true
+            }
+        },
+        {
+            path: '/chapter/',
+            name: 'bookcase',
+            component: book_chatper,
             meta: {
                 requireLogin: true
             }
