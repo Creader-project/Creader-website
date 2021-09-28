@@ -12,8 +12,8 @@
           <el-container>
             <el-header>
               <div>
-                <h1 class="title">Book Name</h1>
-                <h2 class="subtitle">Book author</h2>
+                <h1 class="title">{{this.book_info.title}}</h1>
+                <h2 class="subtitle">{{ book_info ? book_info.author.username : '' }}</h2>
               </div>
               <el-rate
                   v-model="value"
@@ -24,37 +24,33 @@
               >
               </el-rate>
             </el-header>
-            <el-main>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin neque justo, sit amet
-                facilisis arcu ornare nec. Aliquam dolor sem, vulputate ac libero id, sollicitudin mattis mauris. Sed
-                iaculis quis felis ut accumsan. Duis id fermentum massa. Phasellus faucibus blandit nisi vestibulum
-                vulputate. Duis placerat viverra arcu, in gravida lorem porta nec. Nullam dictum ex id sapien gravida,
-                non fringilla ex pellentesque.</p>
-            </el-main>
+            <div class="short_des">
+              <p>{{ this.book_info.description }}</p>
+            </div>
             <el-divider></el-divider>
             <nav class="level">
               <div class="level-item has-text-centered">
                 <div>
                   <p class="heading">View</p>
-                  <p class="title">3,456</p>
+                  <p class="title total_click_styple">{{ this.book_info.total_click}}</p>
                 </div>
               </div>
               <div class="level-item has-text-centered">
                 <div>
                   <p class="heading">Rating</p>
-                  <p class="title">123</p>
+                  <p class="title">{{ this.book_info.total_vote }}</p>
                 </div>
               </div>
               <div class="level-item has-text-centered">
                 <div>
                   <p class="heading">Likes</p>
-                  <p class="title">456K</p>
+                  <p class="title">{{this.book_info.fav_num }}</p>
                 </div>
               </div>
               <div class="level-item has-text-centered">
                 <div>
                   <p class="heading">Chapters</p>
-                  <p class="title">789</p>
+                  <p class="title">{{ this.book_info.chapter_count }}</p>
                 </div>
               </div>
             </nav>
@@ -163,7 +159,7 @@
                 <article class="media">
                   <figure class="media-left">
                     <p class="image is-48x48">
-                      <img src="https://bulma.io/images/placeholders/96x96.png">
+                      <img src="https://bulma.io/images/placeholders/96x96.png" alt="">
                     </p>
                   </figure>
                   <div class="media-content">
@@ -241,13 +237,13 @@
 
 <script>
 import axios from "axios";
-
+import {requestService} from '../api/axois'
 export default {
   name: "book_detail",
 
   data() {
     return {
-      book_info: null,
+      book_info: '',
       url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
       value: 3.7,
       loading: false,
@@ -279,13 +275,15 @@ export default {
       ]
     }
   },
-  beforeCreate() {
+  mounted() {
     console.log(axios.defaults.headers.common['Authorization'])
-    axios
-        .get('http://127.0.0.1:8000/api/v1/detail/1')
+    axios.get('http://127.0.0.1:8000/api/v1/book/1')
         .then((response) => {
           console.log(response.data)
           this.book_info = response.data
+        })
+        .catch((err)=>{
+          console.log(err)
         })
   },
   computed: {
@@ -310,18 +308,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
 
-.detail_header {
-  text-align: left;
-  padding: 20px 0px;
+.detail_header
+  text-align: left
+  padding: 20px 0
 
-  .book_title {
+.short_des
+  padding: 20px
+  min-height: 100px
 
-  }
-
-  .book_button {
-
-  }
-}
 </style>
