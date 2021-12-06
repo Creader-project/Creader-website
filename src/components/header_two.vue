@@ -3,7 +3,7 @@
     <div class="container is-fluid">
       <div class="navbar-brand">
         <a class="navbar-item" href="#">
-          <img alt="" class="image"  width="96px">
+          <img alt="" class="image" width="96px">
         </a>
         <a aria-expanded="false" aria-label="menu" class="navbar-burger" role="button">
           <span aria-hidden="true"></span>
@@ -12,8 +12,12 @@
         </a>
       </div>
       <div class="navbar-menu">
-        <div class="navbar-start"><a class="navbar-item" href="#">About</a><a class="navbar-item" href="#">Company</a><a
-            class="navbar-item" href="#">Services</a><a class="navbar-item" href="#">Testimonials</a></div>
+        <div class="navbar-start">
+          <a class="navbar-item" href="#"><router-link to="/">Home</router-link></a>
+          <a class="navbar-item" href="#"><router-link to="/login">About</router-link></a>
+          <a class="navbar-item" href="#">Services</a>
+          <a class="navbar-item" href="#">Testimonials</a>
+        </div>
         <div class="navbar-item">
           <el-input
               class="input " placeholder="请输入内容"
@@ -25,13 +29,13 @@
             </template>
           </el-input>
         </div>
-        <div class="navbar-item" v-if="!login_is">
+        <div v-if="!login_is" class="navbar-item">
           <div class="buttons">
             <a class="button" href="#" @click="login">Sign In</a>
             <a class="button" href="#">Sign Up</a>
           </div>
         </div>
-        <div class="navbar-item" v-else>
+        <div v-else class="navbar-item">
           <div class="buttons">
             <a class="button" href="#">Bookshelf</a>
             <a class="button is-danger" href="#">Create</a>
@@ -49,13 +53,13 @@
 <script>
 export default {
   name: "header_two",
-  data(){
-    return{
-      login_is:false
+  data() {
+    return {
+      login_is: false
     }
   },
-  methods:{
-    login(){
+  methods: {
+    login() {
       this.login_is = true;
     }
   }

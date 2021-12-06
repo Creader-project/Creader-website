@@ -6,27 +6,22 @@
           <a class="mb-4 is-inline-block" href="#">
             Creader
           </a>
-          <p class="has-text-grey-dark mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p class="has-text-grey-dark mb-6">Where your journay starts <br /> and dream comes true</p>
           <div>
             <a class="mr-3 is-inline-block" href="#">
-              <img class="mx-auto image is-fullwidth"
-                   src="../views/components/assets/bulma-plain-assets/socials/facebook.svg">
+              <font-awesome-icon :icon="['fab', 'instagram']" size="lg" />
             </a>
             <a class="mr-3 is-inline-block" href="#">
-              <img class="mx-auto image is-fullwidth"
-                   src="../views/components/assets/bulma-plain-assets/socials/github.svg">
+              <font-awesome-icon :icon="['fab', 'facebook']"  size="lg"/>
             </a>
             <a class="mr-3 is-inline-block" href="#">
-              <img class="mx-auto image is-fullwidth"
-                   src="../views/components/assets/bulma-plain-assets/socials/instagram.svg">
+              <font-awesome-icon :icon="['fab', 'youtube']"  size="lg"/>
             </a>
             <a class="mr-3 is-inline-block" href="#">
-              <img class="mx-auto image is-fullwidth"
-                   src="../views/components/assets/bulma-plain-assets/socials/linkedin.svg">
+              <font-awesome-icon :icon="['fab', 'linkedin']"  size="lg"/>
             </a>
             <a class="is-inline-block" href="#">
-              <img class="mx-auto image is-fullwidth"
-                   src="../views/components/assets/bulma-plain-assets/socials/twitter.svg">
+              <font-awesome-icon :icon="['fab', 'twitter']"  size="lg"/>
             </a>
           </div>
         </div>
@@ -72,7 +67,7 @@
         </div>
       </div>
       <div class="pt-5 has-text-centered">
-        <p>All rights reserved © Wireframes Corporation 2021</p>
+        <p>All rights reserved © TheBookShelf Limited 2021</p>
       </div>
     </div>
   </footer>

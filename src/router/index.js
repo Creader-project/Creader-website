@@ -1,5 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import Home from '../views/Home.vue'
+import Home_v1 from '../views/Home_v1.vue'
 import author_book_create from "../views/components/author_book_create.vue";
 import book_detail from "../views/book_detail.vue";
 import about_us from "../views/about_us.vue";
@@ -14,8 +14,8 @@ const routes = createRouter({
     routes: [
         {
             path: '/',
-            name: 'Home',
-            component: Home
+            name: 'Home_v1',
+            component: Home_v1
         },
         {
             path: '/404_bad_request',
