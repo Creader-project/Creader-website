@@ -6,17 +6,16 @@
           <img alt="" class="image" width="96px">
         </a>
         <a aria-expanded="false" aria-label="menu" class="navbar-burger" role="button">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+          <span aria-hidden="true">Home</span>
+          <span aria-hidden="true">Browse</span>
+          <span aria-hidden="true">Ranking</span>
         </a>
       </div>
       <div class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item" href="#"><router-link to="/">Home</router-link></a>
-          <a class="navbar-item" href="#"><router-link to="/login">About</router-link></a>
-          <a class="navbar-item" href="#">Services</a>
-          <a class="navbar-item" href="#">Testimonials</a>
+          <a class="navbar-item"><router-link to="/">Home</router-link></a>
+          <a class="navbar-item" href="#"><router-link to="/login">Browse</router-link></a>
+          <a class="navbar-item" href="#">Ranking</a>
         </div>
         <div class="navbar-item">
           <el-input

@@ -1,8 +1,5 @@
 <template>
   <div class="home">
-    <a v-if="$store.state.isAuthenticated" class="button is-primary">
-      <router-link to="/plan">Plan</router-link>
-    </a>
     <header_two></header_two>
     <el-carousel interval="10000" indicator-position="none" arrow="hover" height="500px">
       <el-carousel-item v-for="item in 4" :key="item">
