@@ -3,4 +3,6 @@ export const networkConfig = {
     requestTimeout: 20000
 }
 
-export default networkConfig;
+export const get_user = () => {
+  
+}

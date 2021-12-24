@@ -1,20 +1,23 @@
 <template>
   <div class="home">
     <header_two></header_two>
-    <el-carousel interval="10000" indicator-position="none" arrow="hover" height="500px">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <h3>{{ item }}</h3>
+    <el-carousel v-if="bannerObject.length > 0" :interval="interval" indicator-position="none" arrow="hover" height="500px">
+      <el-carousel-item v-for="item in bannerObject" :key="item">
+        <h3>{{ item.text }}</h3>
         <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">Take quick action that increases
           your
           brand's regular profit.</h2>
         <p class="subtitle mb-5">If you have ever wondered how to develop your brand, this is the
           place for you. Take a big step forward in growing your business with this great tool.</p>
         <div class="buttons is-centered">
-          <a class="button is-primary" href="#">Active Demo</a>
+          <a class="button is-primary" :href="item.book">Active Demo</a>
           <a class="button" href="#">Share with your friends</a>
         </div>
       </el-carousel-item>
     </el-carousel>
+    <div>
+
+    </div>
     <div class="hero is-medium ">
       <div class="hero-foot">
         <nav class="tabs is-centered is-boxed is-fullwidth">
@@ -55,48 +58,48 @@
                   enim.</p>
               </div>
               <div class="column grid">
-                <div class="top_pick_small">
+                <div class="top_pick_small" v-for="item in topPickObject">
                   <el-image class="top_pick_small_cover" :src="src"></el-image>
                   <div class="top_pick_small_info">
-                    <p class="title is-6">OpenMP and OpenMPI</p>
-                    <span>Amilie Hadoop</span>
+                    <p class="title is-6">{{item.book.title }}</p>
+                    <span>{{ item.book.author }}</span>
                   </div>
                 </div>
-                <div class="top_pick_small">
-                  <el-image class="top_pick_small_cover" :src="src"></el-image>
-                  <div class="top_pick_small_info">
-                    <p class="title is-6">OpenMP and OpenMPI</p>
-                    <span>Amilie Hadoop</span>
-                  </div>
-                </div>
-                <div class="top_pick_small">
-                  <el-image class="top_pick_small_cover" :src="src"></el-image>
-                  <div class="top_pick_small_info">
-                    <p class="title is-6">OpenMP and OpenMPI</p>
-                    <span>Amilie Hadoop</span>
-                  </div>
-                </div>
-                <div class="top_pick_small">
-                  <el-image class="top_pick_small_cover" :src="src"></el-image>
-                  <div class="top_pick_small_info">
-                    <p class="title is-6">OpenMP and OpenMPI</p>
-                    <span>Amilie Hadoop</span>
-                  </div>
-                </div>
-                <div class="top_pick_small">
-                  <el-image class="top_pick_small_cover" :src="src"></el-image>
-                  <div class="top_pick_small_info">
-                    <p class="title is-6">OpenMP and OpenMPI</p>
-                    <span>Amilie Hadoop</span>
-                  </div>
-                </div>
-                <div class="top_pick_small">
-                  <el-image class="top_pick_small_cover" :src="src"></el-image>
-                  <div class="top_pick_small_info">
-                    <p class="title is-6">OpenMP and OpenMPI</p>
-                    <span>Amilie Hadoop</span>
-                  </div>
-                </div>
+<!--                <div class="top_pick_small">-->
+<!--                  <el-image class="top_pick_small_cover" :src="src"></el-image>-->
+<!--                  <div class="top_pick_small_info">-->
+<!--                    <p class="title is-6">OpenMP and OpenMPI</p>-->
+<!--                    <span>Amilie Hadoop</span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="top_pick_small">-->
+<!--                  <el-image class="top_pick_small_cover" :src="src"></el-image>-->
+<!--                  <div class="top_pick_small_info">-->
+<!--                    <p class="title is-6">OpenMP and OpenMPI</p>-->
+<!--                    <span>Amilie Hadoop</span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="top_pick_small">-->
+<!--                  <el-image class="top_pick_small_cover" :src="src"></el-image>-->
+<!--                  <div class="top_pick_small_info">-->
+<!--                    <p class="title is-6">OpenMP and OpenMPI</p>-->
+<!--                    <span>Amilie Hadoop</span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="top_pick_small">-->
+<!--                  <el-image class="top_pick_small_cover" :src="src"></el-image>-->
+<!--                  <div class="top_pick_small_info">-->
+<!--                    <p class="title is-6">OpenMP and OpenMPI</p>-->
+<!--                    <span>Amilie Hadoop</span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="top_pick_small">-->
+<!--                  <el-image class="top_pick_small_cover" :src="src"></el-image>-->
+<!--                  <div class="top_pick_small_info">-->
+<!--                    <p class="title is-6">OpenMP and OpenMPI</p>-->
+<!--                    <span>Amilie Hadoop</span>-->
+<!--                  </div>-->
+<!--                </div>-->
               </div>
             </div>
           </div>
@@ -178,20 +181,41 @@
 import header_two from "../components/header_two.vue";
 import Footer_component from "../components/footer_component.vue";
 import {ref} from 'vue';
-
+import axios from "axios";
 export default {
   name: 'Home_v1',
   components: {Footer_component, header_two},
   data() {
     return {
+      interval: 3000,
       activeItem: 'monetization',
       categories: ['History', 'Sci-Fi', 'Romance', 'Urban', 'FanFiction', 'Horror', 'Criminal', 'Fantasy', 'Action', 'Game'],
       src: ref(
           'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg'
-      )
+      ),
+      bannerObject:{},
+      topPickObject:{}
     }
   },
+
   watch: {},
+  async beforeMount() {
+    let detailUrl = [
+      'http://127.0.0.1:8000/api/v1/index_image/',
+      'http://127.0.0.1:8000/api/v1/index_link/'
+    ];
+
+    await Promise
+        .all(detailUrl.map((detailUrl) => axios.get(detailUrl)))
+        .then(([{data: banner_image}, {data: top_links}] )=> {
+          this.bannerObject = banner_image;
+          console.log(top_links)
+          this.topPickObject = top_links;
+        })
+        .catch(errors => {
+          console.error(errors);
+        });
+  },
   computed: {
     firstHalf: function () {
       //should be random in the future
@@ -211,21 +235,16 @@ export default {
     },
     setActive(menuItem) {
       this.activeItem = menuItem
-    }
+    },
   },
-  mounted() {
-    // for auto resize the
-    window.addEventListener('resize', () => {
-
-    }, false)
-  }
 }
 </script>
 <style lang="scss" scoped>
-.top_pick_large_cover{
+.top_pick_large_cover {
   width: 225px;
   height: 350px;
 }
+
 .grid {
   display: grid;
   grid-gap: 5px;
@@ -238,6 +257,7 @@ export default {
     .top_pick_small_info {
       position: absolute;
       bottom: 0;
+      width: 100%;
 
       p {
         margin: 0;

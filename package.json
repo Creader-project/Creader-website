@@ -10,7 +10,7 @@
     "start": "npm run css-watch"
   },
   "dependencies": {
-    "@element-plus/icons": "0.0.11",
+    "@element-plus/icons-vue": "^0.2.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
@@ -25,7 +25,8 @@
     "stripe": "^8.174.0",
     "vue": "^3.2.23",
     "vue-router": "4",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "yarn": "^1.22.17"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.6.0",

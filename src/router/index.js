@@ -2,11 +2,16 @@ import {createRouter, createWebHistory} from 'vue-router'
 import Home_v1 from '../views/Home_v1.vue'
 import author_book_create from "../views/components/author_book_create.vue";
 import book_detail from "../views/book_detail.vue";
-import about_us from "../views/about_us.vue";
+import about_us from "../views/ultility/about_us.vue";
 import book_chatper from "../views/book_chatper.vue"
-
-import user_book_case from "../views/user_book_case.vue";
-import bad_request from "../views/Bad_request.vue";
+import login from "../views/Login.vue"
+import user_book_case from "../views/user_center/component/user_book_case.vue";
+import bad_request from "../views/ultility/Bad_request.vue";
+import user_home from "../views/user_center/user_home.vue";
+import user_setting from "../views/user_center/component/user_setting.vue";
+import registration from "../views/registration.vue";
+import user_inbox from "../views/user_center/component/user_inbox.vue";
+import user_statement from "../views/user_center/component/user_statement.vue";
 // import store from '../store/index'
 
 const routes = createRouter({
@@ -28,7 +33,7 @@ const routes = createRouter({
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+            component: login
         },
         {
             path: '/register',
@@ -36,7 +41,7 @@ const routes = createRouter({
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import(/* webpackChunkName: "about" */ '../views/registration.vue')
+            component: registration
         },
         {
             path: '/payment/success',
@@ -79,20 +84,52 @@ const routes = createRouter({
             }
         },
         {
-            path: '/bookcase/',
-            name: 'bookcase',
-            component: user_book_case,
+            path: '/chapter/',
+            name: 'chapter',
+            component: book_chatper,
             meta: {
                 requireLogin: true
             }
         },
         {
-            path: '/chapter/',
-            name: 'bookcase',
-            component: book_chatper,
-            meta: {
-                requireLogin: true
-            }
+            path: '/profile/',
+            name: 'user_home',
+            component: user_home,
+            children: [
+                {
+                    path: '',
+                    name: 'bookcase',
+                    alias: '/bookcase/',
+                    components: {
+                        content: user_book_case
+                    },
+                }, {
+                    path: '/inbox/',
+                    name: 'inbox',
+                    alias: '/inbox/',
+                    components: {
+                        content: user_inbox
+                    },
+                },{
+                    path: '/statement/',
+                    name: 'statement',
+                    alias: '/statement/',
+                    components: {
+                        content: user_statement
+                    },
+                },
+            ]
+
+        },
+        // {
+        //     path: '/bookcase/',
+        //     name: 'bookcase',
+        //     component: user_book_case,
+        // },
+        {
+            path: '/settings',
+            name: 'user_setting',
+            component: user_setting,
         },
 
     ]
