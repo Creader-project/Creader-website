@@ -237,7 +237,6 @@
 
 <script>
 import axios from "axios";
-import {requestService} from '../api/axois'
 export default {
   name: "book_detail",
 

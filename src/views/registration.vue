@@ -114,10 +114,11 @@ export default {
           username: this.email_address,
           password: this.password
         }
+        console.log('sending request')
         await axios
-            .post('http://127.0.0.1:8000/api/v1/register', formData)
+            .post('http://127.0.0.1:8000/api/v1/create', formData)
             .then((response) => {
-              console.log(response.data)
+              // console.log(response.data)
               toast({
                 message: 'Account was created, please log in',
                 type: 'is-success',
