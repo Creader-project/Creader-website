@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <header_two></header_two>
     <el-carousel v-if="bannerObject.length > 0" :interval="interval" indicator-position="none" arrow="hover" height="500px">
       <el-carousel-item v-for="item in bannerObject" :key="item">
         <h3>{{ item.text }}</h3>
@@ -172,7 +171,6 @@
         </el-col>
       </el-row>
     </div>
-    <footer_component></footer_component>
   </div>
 </template>
 
@@ -184,7 +182,6 @@ import {ref} from 'vue';
 import axios from "axios";
 export default {
   name: 'Home_v1',
-  components: {Footer_component, header_two},
   data() {
     return {
       interval: 3000,

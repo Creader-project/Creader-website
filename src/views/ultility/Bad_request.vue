@@ -1,18 +1,34 @@
 <template>
-  <div class="container">
-    <div class="image">
-      <el-image
-          :src="url"
-          fit="fit"
-      ></el-image>
+  <section class="section">
+    <div class="container">
+      <div class="mb-5 columns is-multiline is-centered">
+        <div class="column is-8">
+          <el-image
+              class="image is-fullwidth"
+              :src="url"
+
+          ></el-image>
+        </div>
+      </div>
+      <div class="has-text-centered">
+        <span class="has-text-grey-dark">Error 404</span>
+        <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">Page not found</h2>
+        <p class="subtitle has-text-grey mb-6">Sorry! We are unable to find the page you are looking for</p>
+        <div class="buttons is-centered">
+          <a class="button is-primary" href="#">
+            <router-link
+                :to="{name: 'Home'}"
+                style="text-decoration: none; color: inherit;">
+              Go back to Homepage
+            </router-link>
+          </a>
+          <a class="button" href="#" @click="this.$router.go(-1)">
+            Try Again!
+          </a>
+        </div>
+      </div>
     </div>
-    <div>
-      <p>Something has went wrong Please go back to the home page</p>
-      <router-link :to="{name: 'Home'}">
-        <el-button @click="this.$route.to('/')">Go To Home</el-button>
-      </router-link>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -27,15 +43,4 @@ export default {
 </script>
 
 <style scoped>
-.container{
-  margin: 0 auto;
-  padding: 40px;
-  width: 1077px;
-
-}
-.image{
-  margin: 0 auto;
-  width: 1001px;
-
-}
 </style>

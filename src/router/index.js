@@ -13,6 +13,10 @@ import registration from "../views/registration.vue";
 import user_inbox from "../views/user_center/component/user_inbox.vue";
 import user_statement from "../views/user_center/component/user_statement.vue";
 import chapter_detail from "../views/book_page/chapter_detail.vue";
+import Footer_component from "../components/footer_component.vue";
+import header_two from "../components/header_two.vue";
+import base_view from "../base_view.vue";
+
 // import store from '../store/index'
 
 const routes = createRouter({
@@ -21,34 +25,119 @@ const routes = createRouter({
         {
             path: '/',
             name: 'Home_v1',
-            component: Home_v1
+            component: base_view,
+            redirect: 'index',
+            children: [
+                {
+                    path: '/',
+                    name: 'Home',
+                    components: {
+                        header: header_two,
+                        content:Home_v1,
+                        footer: Footer_component
+                    }
+                },
+                {
+                    path: '/:pathMatch(.*)*',
+                    name: 'NotFound',
+                    components: {
+                        header: header_two,
+                        content:Bad_request,
+                        footer: Footer_component
+                    }
+                },
+                {
+                    path: '/login',
+                    name: 'Login',
+                    components: {
+                        header: header_two,
+                        content:login,
+                        footer: Footer_component
+                    }
+                },
+                {
+                    path: '/register',
+                    name: 'Register',
+                    components: {
+                        header: header_two,
+                        content:registration,
+                        footer: Footer_component
+                    }
+                },
+                {
+                    path: '/book/:id',
+                    name: 'book_detail',
+                    components: {
+                        header: header_two,
+                        content:book_detail,
+                        footer: Footer_component
+                    },
+                    props: true
+
+                },
+                {
+                    path: '/about/',
+                    name: 'about',
+                    components: {
+                        header: header_two,
+                        content:about_us,
+                        footer: Footer_component
+                    },
+                },
+                {
+                    path: '/book/:book_id/:id',
+                    name: 'chapter_detail',
+                    components: {
+                        header: header_two,
+                        content:chapter_detail,
+                        footer: Footer_component
+                    },
+                    props: true,
+                    meta: {
+                        title: 'Chapter',
+                        need_log: false
+                    }
+                },
+                {
+                    path: '/profile/',
+                    name: 'user_home',
+                    components: {
+                        header: header_two,
+                        content: user_home,
+                        footer: Footer_component
+                    },
+                    children: [
+                        {
+                            path: '',
+                            name: 'bookcase',
+                            alias: '/bookcase/',
+                            component:user_book_case
+                        }, {
+                            path: '/inbox/',
+                            name: 'inbox',
+                            alias: '/inbox/',
+                            component: user_inbox
+                        }, {
+                            path: '/statement/',
+                            name: 'statement',
+                            alias: '/statement/',
+                            components: user_statement
+                        },
+                    ]
+
+                },
+                {
+                    path: '/settings',
+                    name: 'user_setting',
+                    components: {
+                        header: header_two,
+                        content: user_setting,
+                        footer: Footer_component
+                    },
+                },
+            ]
         },
-        {
-            path: '/:pathMatch(.*)*',
-            name: 'NotFound',
-            component: Bad_request
-        },
-        {
-            path: '/404_bad_request',
-            name: 'bad_request',
-            component: bad_request
-        },
-        {
-            path: '/login',
-            name: 'Login',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: login
-        },
-        {
-            path: '/register',
-            name: 'Register',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: registration
-        },
+
         {
             path: '/payment/success',
             name: 'Payment_success',
@@ -73,67 +162,8 @@ const routes = createRouter({
                 requireLogin: true
             }
         },
-        {
-            path: '/book/:id',
-            name: 'book_detail',
-            component: book_detail,
-            props: true
 
-        },
-        {
-            path: '/about/',
-            name: 'about',
-            component: about_us,
-        },
-        // {
-        //     path: '/chapter/',
-        //     name: 'chapter',
-        //     props: true,
-        //     component: book_chatper,
-        //     meta: {
-        //         requireLogin: true
-        //     }
-        // },
-        {
-            component: chapter_detail,
-            path: '/book/:book_id/:id',
-            name: 'chapter_detail',
-            props: true,
-            meta: {
-                title: 'Chapter',
-                need_log: false
-            }
-        },
-        {
-            path: '/profile/',
-            name: 'user_home',
-            component: user_home,
-            children: [
-                {
-                    path: '',
-                    name: 'bookcase',
-                    alias: '/bookcase/',
-                    components: {
-                        content: user_book_case
-                    },
-                }, {
-                    path: '/inbox/',
-                    name: 'inbox',
-                    alias: '/inbox/',
-                    components: {
-                        content: user_inbox
-                    },
-                }, {
-                    path: '/statement/',
-                    name: 'statement',
-                    alias: '/statement/',
-                    components: {
-                        content: user_statement
-                    },
-                },
-            ]
 
-        },
         // {
         //     path: '/bookcase/',
         //     name: 'bookcase',

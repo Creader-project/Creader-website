@@ -78,7 +78,6 @@
           </li>
         </ul>
       </div>
-
     </el-col>
   </el-row>
 
@@ -110,11 +109,11 @@ export default {
   .bookshelf_wrapper{
     flex-wrap: wrap;
     display: flex;
-    height: 200px;
     .bookshelf_item{
       flex: 1 0 25%;
     }
   }
+
 }
 
 </style>

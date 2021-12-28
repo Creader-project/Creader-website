@@ -1,5 +1,5 @@
 <template>
-  <el-row :gutter="20">
+  <el-row :gutter="20" >
     <el-col :span="12" :offset="6">
       <div class="user_avatar">
         <el-avatar :size="150" :src="circleUrl"></el-avatar>
@@ -21,7 +21,9 @@
         <strong>UK</strong>
       </p>
       <el-divider/>
-      <router-view name ='content'></router-view>
+      <div class="content-container">
+        <router-view></router-view>
+      </div>
     </el-col>
   </el-row>
 </template>
@@ -41,5 +43,8 @@ export default {
 }
 
 </script>
-<style>
+<style lang="scss" scoped>
+.content-container{
+  margin-bottom: 30px;
+}
 </style>
