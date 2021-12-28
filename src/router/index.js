@@ -1,17 +1,18 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import Home_v1 from '../views/Home_v1.vue'
 import author_book_create from "../views/components/author_book_create.vue";
-import book_detail from "../views/book_detail.vue";
+import book_detail from "../views/book_page/book_detail.vue";
 import about_us from "../views/ultility/about_us.vue";
-import book_chatper from "../views/book_chatper.vue"
 import login from "../views/Login.vue"
 import user_book_case from "../views/user_center/component/user_book_case.vue";
 import bad_request from "../views/ultility/Bad_request.vue";
+import Bad_request from "../views/ultility/Bad_request.vue";
 import user_home from "../views/user_center/user_home.vue";
 import user_setting from "../views/user_center/component/user_setting.vue";
 import registration from "../views/registration.vue";
 import user_inbox from "../views/user_center/component/user_inbox.vue";
 import user_statement from "../views/user_center/component/user_statement.vue";
+import chapter_detail from "../views/book_page/chapter_detail.vue";
 // import store from '../store/index'
 
 const routes = createRouter({
@@ -21,6 +22,11 @@ const routes = createRouter({
             path: '/',
             name: 'Home_v1',
             component: Home_v1
+        },
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'NotFound',
+            component: Bad_request
         },
         {
             path: '/404_bad_request',
@@ -46,7 +52,7 @@ const routes = createRouter({
         {
             path: '/payment/success',
             name: 'Payment_success',
-            component: () => import('../views/Plan_success.vue'),
+            component: () => import('../views/payment/Plan_success.vue'),
             meta: {
                 requireLogin: true
             }
@@ -54,7 +60,7 @@ const routes = createRouter({
         {
             path: '/plan/',
             name: 'Payment',
-            component: () => import('../views/plan.vue'),
+            component: () => import('../views/payment/plan.vue'),
             meta: {
                 requireLogin: true
             }
@@ -68,27 +74,34 @@ const routes = createRouter({
             }
         },
         {
-            path: '/book/',
+            path: '/book/:id',
             name: 'book_detail',
             component: book_detail,
-            meta: {
-                requireLogin: true
-            }
+            props: true
+
         },
         {
             path: '/about/',
             name: 'about',
             component: about_us,
-            meta: {
-                requireLogin: true
-            }
         },
+        // {
+        //     path: '/chapter/',
+        //     name: 'chapter',
+        //     props: true,
+        //     component: book_chatper,
+        //     meta: {
+        //         requireLogin: true
+        //     }
+        // },
         {
-            path: '/chapter/',
-            name: 'chapter',
-            component: book_chatper,
+            component: chapter_detail,
+            path: '/book/:book_id/:id',
+            name: 'chapter_detail',
+            props: true,
             meta: {
-                requireLogin: true
+                title: 'Chapter',
+                need_log: false
             }
         },
         {
@@ -110,7 +123,7 @@ const routes = createRouter({
                     components: {
                         content: user_inbox
                     },
-                },{
+                }, {
                     path: '/statement/',
                     name: 'statement',
                     alias: '/statement/',
