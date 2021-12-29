@@ -58,8 +58,8 @@
       </div>
     </header>
     <el-main>
-      <div class="chapter-body" v-for="(item,i) in context.chapterContent" :key="i">
-        <p v-bind:style="changeStyle()"  v-html="item" class="default_text">
+      <div v-bind:style="changeStyle()" class="chapter-body" v-for="(item,i) in context.chapterContent" :key="i">
+        <p v-html="item" class="default_text">
         </p>
         <br/>
       </div>

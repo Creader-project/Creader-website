@@ -105,11 +105,11 @@ export default {
               'email': response.data.email,
               'role': response.data.role,
               'icon': response.data.icon
-            })
-            localStorage.setItem('username', response.data.username)
-            localStorage.setItem('userid', response.data.id)
-            localStorage.setItem('email', response.data.email)
-            this.$router.push('/')
+            });
+            localStorage.setItem('username', response.data.username);
+            localStorage.setItem('userid', response.data.id);
+            localStorage.setItem('email', response.data.email);
+            this.$router.push({name: 'user_home', params:{id: response.data.id}});
           }).catch((error) => {
             console.log(error.data)
           })

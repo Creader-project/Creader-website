@@ -48,7 +48,7 @@ const routes = createRouter({
                 },
                 {
                     path: '/login',
-                    name: 'Login',
+                    name: 'login',
                     components: {
                         header: header_two,
                         content:login,
@@ -57,7 +57,7 @@ const routes = createRouter({
                 },
                 {
                     path: '/register',
-                    name: 'Register',
+                    name: 'register',
                     components: {
                         header: header_two,
                         content:registration,
@@ -99,8 +99,9 @@ const routes = createRouter({
                     }
                 },
                 {
-                    path: '/profile/',
+                    path: '/bookcase/:id',
                     name: 'user_home',
+                    props: true,
                     components: {
                         header: header_two,
                         content: user_home,
@@ -108,19 +109,17 @@ const routes = createRouter({
                     },
                     children: [
                         {
-                            path: '',
+                            path: '/bookcase/:id',
                             name: 'bookcase',
-                            alias: '/bookcase/',
+                            alis:'',
                             component:user_book_case
                         }, {
-                            path: '/inbox/',
+                            path: '/bookcase/:id/inbox',
                             name: 'inbox',
-                            alias: '/inbox/',
                             component: user_inbox
                         }, {
-                            path: '/statement/',
+                            path: '/bookcase/:id/statement',
                             name: 'statement',
-                            alias: '/statement/',
                             components: user_statement
                         },
                     ]
@@ -169,11 +168,6 @@ const routes = createRouter({
         //     name: 'bookcase',
         //     component: user_book_case,
         // },
-        {
-            path: '/settings',
-            name: 'user_setting',
-            component: user_setting,
-        },
 
     ]
 })

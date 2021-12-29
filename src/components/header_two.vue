@@ -14,7 +14,7 @@
       <div class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item"><router-link to="/">Home</router-link></a>
-          <a class="navbar-item" href="#"><router-link to="/login">Browse</router-link></a>
+          <a class="navbar-item" href="#">Browser</a>
           <a class="navbar-item" href="#">Ranking</a>
         </div>
         <div class="navbar-item">
@@ -28,15 +28,19 @@
             </template>
           </el-input>
         </div>
-        <div v-if="!login_is" class="navbar-item">
+        <div v-if="!this.$store.state.token.access_token" class="navbar-item">
           <div class="buttons">
-            <a class="button" href="#" @click="login">Sign In</a>
-            <a class="button" href="#">Sign Up</a>
+            <a class="button" @click="login">Sign In</a>
+            <a class="button" @click="register">Sign Up</a>
           </div>
         </div>
         <div v-else class="navbar-item">
           <div class="buttons">
-            <a class="button" href="#">Bookshelf</a>
+            <a class="button" href="#">
+              <router-link :to="{name:'bookcase', params:{id:this.$store.state.user.userid}}">
+                Bookshelf
+              </router-link>
+            </a>
             <a class="button is-danger" href="#">Create</a>
             <figure class="image is-48x48">
               <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
@@ -50,6 +54,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "header_two",
   data() {
@@ -59,7 +65,17 @@ export default {
   },
   methods: {
     login() {
-      this.login_is = true;
+      this.$router.push({name: 'login'});
+    },
+    register() {
+      this.$router.push({name: 'register'});
+    }
+  },
+  computed: {
+    checkLogin() {
+      if (this.$store.state.token.access_token) {
+        this.login_is = true;
+      }
     }
   }
 }

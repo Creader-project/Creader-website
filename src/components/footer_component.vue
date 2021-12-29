@@ -30,7 +30,7 @@
             <div class="column is-6 is-3-desktop mb-5">
               <h4 class="is-size-4 has-text-weight-bold mb-4">Company</h4>
               <ul>
-                <li class="mb-2"><a class="button is-white" href="#">About Us</a></li>
+                <li class="mb-2"><a class="button is-white" href="#" @click="toRouter('about')">About Us</a></li>
                 <li class="mb-2"><a class="button is-white" href="#">Careers</a></li>
                 <li class="mb-2"><a class="button is-white" href="#">Press</a></li>
                 <li><a class="button is-white" href="#">Blog</a></li>
@@ -75,7 +75,13 @@
 
 <script>
 export default {
-  name: "footer_component"
+  name: "footer_component",
+
+  methods: {
+    toRouter(dest) {
+      this.$router.push({name: dest});
+    }
+  }
 }
 </script>
 
