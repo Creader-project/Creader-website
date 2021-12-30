@@ -41,7 +41,8 @@
 </template>
 
 <script>
-  import {getAuthorBook} from "../../../../api/api";
+
+  import axios from "axios";
 
   export default {
     name: "dashboard",
@@ -52,7 +53,7 @@
     },
     methods:{
       getBook(){
-        getAuthorBook().then((response)=>{
+        axios.get('http://127.0.0.1:8000/api/v1/author/book/').then((response)=>{
           let bookList = response.data;
           this.bookItem = bookList[bookList.length-1];
         })

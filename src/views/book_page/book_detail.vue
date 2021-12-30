@@ -289,14 +289,18 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 
-.detail_header
-  text-align: left
-  padding: 20px 0
+.detail_header{
+  text-align: left;
+  padding: 20px 0;
+}
 
-.short_des
-  padding: 20px
-  min-height: 100px
+
+.short_des{
+  padding: 20px;
+  min-height: 100px;
+}
+
 
 </style>

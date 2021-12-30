@@ -4,3 +4,14 @@
 $tabs-toggle-link-border-width: 2px;
 $tabs-toggle-link-border-style: none;
 $tabs-boxed-link-hover-border-bottom-color: yellow;
+
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}

@@ -53,7 +53,6 @@
 </template>
 
 <script>
-  import {getBookCategory, registerAuthorBook} from "../../../../api/api";
 
   export default {
     name: "book_create",

@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <el-carousel v-if="bannerObject.length > 0" :interval="interval" indicator-position="none" arrow="hover" height="500px">
+    <el-carousel v-if="bannerObject.length > 0" :interval="interval" indicator-position="none" arrow="hover"
+                 height="500px">
       <el-carousel-item v-for="item in bannerObject" :key="item">
         <h3>{{ item.text }}</h3>
         <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">Take quick action that increases
@@ -59,46 +60,11 @@
               <div class="column grid">
                 <div class="top_pick_small" v-for="item in topPickObject">
                   <el-image class="top_pick_small_cover" :src="src"></el-image>
-                  <div class="top_pick_small_info">
-                    <p class="title is-6">{{item.book.title }}</p>
-                    <span>{{ item.book.author }}</span>
+                  <div class="top_pick_small_info" @click="toTheBook(item.book.id)">
+                    <h3 class="book-title">{{ item.book.title }}</h3>
+                    <span class="book-author">{{ item.book.author }}</span>
                   </div>
                 </div>
-<!--                <div class="top_pick_small">-->
-<!--                  <el-image class="top_pick_small_cover" :src="src"></el-image>-->
-<!--                  <div class="top_pick_small_info">-->
-<!--                    <p class="title is-6">OpenMP and OpenMPI</p>-->
-<!--                    <span>Amilie Hadoop</span>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="top_pick_small">-->
-<!--                  <el-image class="top_pick_small_cover" :src="src"></el-image>-->
-<!--                  <div class="top_pick_small_info">-->
-<!--                    <p class="title is-6">OpenMP and OpenMPI</p>-->
-<!--                    <span>Amilie Hadoop</span>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="top_pick_small">-->
-<!--                  <el-image class="top_pick_small_cover" :src="src"></el-image>-->
-<!--                  <div class="top_pick_small_info">-->
-<!--                    <p class="title is-6">OpenMP and OpenMPI</p>-->
-<!--                    <span>Amilie Hadoop</span>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="top_pick_small">-->
-<!--                  <el-image class="top_pick_small_cover" :src="src"></el-image>-->
-<!--                  <div class="top_pick_small_info">-->
-<!--                    <p class="title is-6">OpenMP and OpenMPI</p>-->
-<!--                    <span>Amilie Hadoop</span>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="top_pick_small">-->
-<!--                  <el-image class="top_pick_small_cover" :src="src"></el-image>-->
-<!--                  <div class="top_pick_small_info">-->
-<!--                    <p class="title is-6">OpenMP and OpenMPI</p>-->
-<!--                    <span>Amilie Hadoop</span>-->
-<!--                  </div>-->
-<!--                </div>-->
               </div>
             </div>
           </div>
@@ -176,10 +142,9 @@
 
 <script>
 // @ is an alias to /src
-import header_two from "../components/header_two.vue";
-import Footer_component from "../components/footer_component.vue";
 import {ref} from 'vue';
 import axios from "axios";
+
 export default {
   name: 'Home_v1',
   data() {
@@ -190,8 +155,8 @@ export default {
       src: ref(
           'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg'
       ),
-      bannerObject:{},
-      topPickObject:{}
+      bannerObject: {},
+      topPickObject: {}
     }
   },
 
@@ -204,7 +169,7 @@ export default {
 
     await Promise
         .all(detailUrl.map((detailUrl) => axios.get(detailUrl)))
-        .then(([{data: banner_image}, {data: top_links}] )=> {
+        .then(([{data: banner_image}, {data: top_links}]) => {
           this.bannerObject = banner_image;
           console.log(top_links)
           this.topPickObject = top_links;
@@ -233,6 +198,9 @@ export default {
     setActive(menuItem) {
       this.activeItem = menuItem
     },
+    toTheBook(bookId) {
+      this.$router.push({name: 'book_detail', params: {id: bookId}});
+    }
   },
 }
 </script>
@@ -250,15 +218,13 @@ export default {
   .top_pick_small {
     position: relative;
     height: 280px;
-
+    &:hover{
+      color: #00c4a7;
+    }
     .top_pick_small_info {
       position: absolute;
       bottom: 0;
       width: 100%;
-
-      p {
-        margin: 0;
-      }
     }
 
     .top_pick_small_cover {
