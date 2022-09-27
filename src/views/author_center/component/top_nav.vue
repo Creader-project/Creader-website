@@ -68,7 +68,6 @@
 
 <script>
   import {mapGetters} from "vuex";
-  import cookie from "../../../../static/cookie/cookie";
 
   export default {
     name: "top_nav",
@@ -127,10 +126,6 @@
         }
       },
       signOut() {
-        cookie.delCookie('token');
-        cookie.delCookie('name');
-        cookie.delCookie('role');
-        cookie.delCookie('user_id');
         this.$store.dispatch('setInfo');
         this.$store.commit('removeToken');
         this.$router.push('/')
@@ -145,7 +140,7 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .container_author {
     width: 100%;
     .topbar-wrap {

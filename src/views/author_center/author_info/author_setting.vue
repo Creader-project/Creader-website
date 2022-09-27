@@ -53,7 +53,6 @@
 </template>
 
 <script>
-  import {getUserDetail, updateUserDetail} from "../../../../api/api";
   import axios from "axios";
 
   export default {
@@ -81,7 +80,7 @@
     },
     methods: {
       getUser() {
-        getUserDetail(this.getUserId).then((response) => {
+        axios.get('http://127.0.0.1:8000/api/v1/author/book/').then((response) => {
           console.log(response.data);
           this.user_info = response.data;
           this.fileList.push({name:'user_icon', url:response.data.profile.icon})
@@ -95,10 +94,10 @@
       },
       updateUser() {
         axios.all([
-          updateUserDetail(this.getUserId, this.formData, {headers:{
+          axios.patch(`http://127.0.0.1:8000/api/v1/user/${this.getUserId}`, this.formData, {headers:{
               'Content-type':'multipart/form-data'
             }}),
-          updateUserDetail(this.getUserId, {
+          axios.patch(`http://127.0.0.1:8000/api/v1/user/${this.getUserId}`, {
             "email": this.user_info.email,
             "profile": {
               "gender": this.user_info.profile.gender,

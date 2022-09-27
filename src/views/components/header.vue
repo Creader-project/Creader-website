@@ -12,8 +12,13 @@
         </a>
       </div>
       <div class="navbar-menu">
-        <div class="navbar-start"><a class="navbar-item" href="#">About</a><a class="navbar-item" href="#">Company</a><a
-            class="navbar-item" href="#">Services</a><a class="navbar-item" href="#">Testimonials</a></div>
+        <div class="navbar-start">
+          <a class="navbar-item" href="#"><router-link to="/">Home</router-link></a>
+          <a class="navbar-item" href="#"><router-link to="/login">About</router-link></a>
+          <a class="navbar-item" href="#">Company</a>
+          <a class="navbar-item" href="#">Services</a>
+          <a class="navbar-item" href="#">Testimonials</a>
+        </div>
         <div class="navbar-item">
           <div class="field has-addons">
             <div class="control">

@@ -17,7 +17,9 @@
 </template>
 
 <script>
-  import {getUserCommentForAuthor} from "../../../../../api/api";
+
+
+  import axios from "axios";
 
   export default {
         name: "book_comment",
@@ -31,7 +33,7 @@
       },
       methods:{
           getUserComment(){
-            getUserCommentForAuthor(this.$route.params.book_id).then((response)=>{
+            axios.get('http://127.0.0.1:8000/api/v1/book/comment').then((response)=>{
               console.log(response.data);
               this.user_comment = response.data;
             }).catch((err)=>{

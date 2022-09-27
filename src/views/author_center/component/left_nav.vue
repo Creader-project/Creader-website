@@ -89,7 +89,7 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .container-aside {
     min-width: 50px;
     background: #333744;

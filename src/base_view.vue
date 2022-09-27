@@ -1,13 +1,13 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+    <router-view name = "header"></router-view>
+    <router-view class="content-margin" name = "content"></router-view>
+    <router-view name = "footer"></router-view>
 </template>
 <script>
 import axios from 'axios'
 
 export default {
-  name: 'App',
+  name: 'base_view',
   beforeCreate() {
     this.$store.commit('initializeStore')
 
@@ -20,4 +20,8 @@ export default {
 }
 </script>
 <style>
+.content-margin{
+  margin: 30px 0;
+}
+
 </style>

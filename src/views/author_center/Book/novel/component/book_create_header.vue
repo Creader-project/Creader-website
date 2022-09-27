@@ -28,7 +28,7 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .container_author {
     width: 100%;
 

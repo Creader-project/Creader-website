@@ -20,7 +20,7 @@
     }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .author_centre{
   position: absolute;
   top: 0px;

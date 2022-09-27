@@ -3,29 +3,29 @@
     <el-col :span="1" :offset="6">
       <div class="left_panel" style="">
         <div class="panel_item bg-purple">
-          <fa icon="bookmark"></fa>
+          <font-awesome-icon icon="bookmark"></font-awesome-icon>
         </div>
         <div class="panel_item bg-purple">
-          <fa icon="list"></fa>
+          <font-awesome-icon icon="list"></font-awesome-icon>
         </div>
         <div class="panel_item bg-purple">
-          <fa icon="vote-yea"></fa>
+          <font-awesome-icon icon="vote-yea"></font-awesome-icon>
         </div>
         <div class="panel_item bg-purple">
           <a @click="toggleBigger('comment')">
-            <fa icon="comment-dots"></fa>
+            <font-awesome-icon icon="comment-dots"></font-awesome-icon>
           </a>
         </div>
         <div class="panel_item bg-purple">
-          <fa icon="plus-circle"></fa>
+          <font-awesome-icon icon="plus-circle"></font-awesome-icon>
         </div>
         <div class="panel_item bg-purple">
           <a @click="toggleBigger('config')">
-            <fa icon="cog"></fa>
+            <font-awesome-icon icon="cog"></font-awesome-icon>
           </a>
         </div>
         <div class="panel_item bg-purple">
-          <fa icon="info-circle"></fa>
+          <font-awesome-icon icon="info-circle"></font-awesome-icon>
         </div>
       </div>
 
@@ -40,7 +40,7 @@
           >
             <li v-for="i in count" :key="i" class="chapter_item">
               <div>
-                <div class="chapter_header">
+                <div class="chapter-header">
                   <el-divider class="chapter_divide">
                     <p class="title is-4 chapter_title">Chapter {{ i }}</p>
                   </el-divider>
@@ -111,7 +111,7 @@
       </div>
     </el-col>
     <el-col :span="4">
-      <div class="grid-content bg-purple" v-if="comment_show && content_type === 'config'" style="position: fixed">
+      <div class="grid-content bg-purple tab-transition" v-if="comment_show && content_type === 'config'" style="position: fixed">
         <el-form>
           <el-button type="text" @click="toggleBigger">
             <fa icon="times-circle"></fa>
@@ -128,7 +128,7 @@
           </el-form-item>
         </el-form>
       </div>
-      <transition name="el-fade-in-linear">
+      <transition name="slide">
         <div class="grid-content bg-purple" v-show="comment_show && content_type === 'comment'" style="position: fixed">
           <div>
             <el-button type="text" @click="toggleBigger">
@@ -146,7 +146,7 @@
               </div>
             </div>
           </nav>
-          <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tabs v-model="activeName">
             <el-tab-pane label="User" name="first">
               <article class="media">
                 <figure class="media-left">
@@ -232,43 +232,68 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 
-.body
-  background-color: #f6f6f6
-
-.left_panel
-  position: fixed
-  top: 300px
-
-  .panel_item
-    width: 52.63px
-    height: 52.63px
-    line-height: 52px
-    margin-left: 54px
-    background-color: lightcyan
+.body{
+  background-color: #f6f6f6;
+}
 
 
-.chapter
-  background-color: white
-  padding: 0 50px
-
-  .chapter_item
-    padding: 50px 0
-    margin: 0 0 30px
-
-    .chapter_divide
-      color: red
-
-    .chapter_detail
-      margin-top: 30px
-
-    .chapter_body
-      padding: 20px 50px
-      text-align: justify
+.left_panel{
+  position: fixed;
+  top: 300px;
+}
 
 
-.grid-content
-  width: 300px
-  text-align: left
+  .panel_item{
+    width: 52.63px;
+    height: 52.63px;
+    line-height: 52px;
+    margin-left: 54px;
+    background-color: lightcyan;
+  }
+
+
+.chapter{
+  background-color: white;
+  padding: 0 50px;
+
+  .chapter_item{
+    padding: 50px 0;
+    margin: 0 0 30px;
+  }
+
+
+  .chapter_divide{
+    color: red;
+  }
+
+
+  .chapter_detail{
+    margin-top: 30px;
+  }
+
+
+  .chapter_body{
+    padding: 20px 50px;
+    text-align: justify;
+  }
+}
+.slide-leave-active,
+.slide-enter-active {
+  transition: 1s;
+}
+.slide-enter {
+  transform: translate(100%, 0);
+}
+.slide-leave-to {
+  transform: translate(-100%, 0);
+}
+
+
+.grid-content{
+  width: 300px;
+  text-align: left;
+}
+
 </style>

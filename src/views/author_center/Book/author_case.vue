@@ -14,7 +14,6 @@
 
 <script>
 
-  import {getAuthorBook} from '../../../../api/api'
 
   export default {
     name: "author_case",
