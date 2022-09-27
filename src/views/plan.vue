@@ -150,8 +150,10 @@ export default {
   },
   methods: {
     async getPubKey() {
+      // Set loading to true
       this.$store.commit('setIsLoading', true)
 
+      // Get the public key from the server
       await axios
           .get(`http://127.0.0.1:8000/api/v1/stripe/get_stripe_pub_key/`)
           .then(response => {
@@ -161,6 +163,7 @@ export default {
             console.log(error)
           })
 
+      // get the product list
       await axios
           .get('http://127.0.0.1:8000/api/v1/subscription/')
           .then(response => {
@@ -181,6 +184,7 @@ export default {
         billing_address: this.billing_address
       }
 
+      // Create a Checkout Session with the selected plan ID
       await axios
           .post('http://127.0.0.1:8000/api/v1/stripe/create_checkout_session/', data)
           .then(response => {
@@ -236,6 +240,8 @@ export default {
         price_id: 'price_1JF4FxBaL13HgkoymjNPtsCs'
       }
       console.log(data)
+
+      // Create a Checkout Session with the selected plan ID
       await axios
           .post('http://127.0.0.1:8000/api/v1/stripe/create_topup_session/', data)
           .then(response => {

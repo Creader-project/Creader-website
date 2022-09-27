@@ -89,6 +89,8 @@ export default {
       this.$router.back()
     },
     async toRegister() {
+      // form validation
+      // check if email is empty
       if (this.email_address === '') {
         this.errors.push('The email address is missing')
       } else {
@@ -97,16 +99,19 @@ export default {
           this.errors.push('Please insert correct email format')
         }
       }
+      // check if password is empty
       if (this.password === '') {
         this.errors.push('The password is too short')
       }
-
+      // check if password is equal to confirm password
       if (this.password !== this.password2) {
         this.errors.push('The password are not matching')
       }
+      // check if terms and conditions is checked
       if (this.isTCClicked === false) {
         this.errors.push('Please accept the terms and condition!')
       }
+      // if there is no error, send the data to the server
       if (!this.errors.length) {
         this.$store.commit('setIsLoading', true)
 
@@ -114,6 +119,8 @@ export default {
           username: this.email_address,
           password: this.password
         }
+
+        // send the data to the server
         await axios
             .post('http://127.0.0.1:8000/api/v1/register', formData)
             .then((response) => {

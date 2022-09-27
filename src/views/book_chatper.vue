@@ -217,6 +217,7 @@ export default {
   },
   methods: {
     load() {
+      // check if it's loading or no more data
       this.loading = true
       setTimeout(() => {
         this.count += 2

@@ -277,6 +277,7 @@ export default {
   },
   mounted() {
     console.log(axios.defaults.headers.common['Authorization'])
+    // get book info
     axios.get('http://127.0.0.1:8000/api/v1/book/1')
         .then((response) => {
           console.log(response.data)
@@ -288,6 +289,7 @@ export default {
   },
   computed: {
     noMore() {
+      // compute if there is no more data
       console.log(this.chapters.length)
       return this.count >= this.chapters.length
     },
@@ -297,7 +299,7 @@ export default {
   },
   methods: {
     load() {
-
+      // check if there is no more data
       this.loading = true
       setTimeout(() => {
         this.count += 2
