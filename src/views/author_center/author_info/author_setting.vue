@@ -94,9 +94,11 @@
       },
       updateUser() {
         axios.all([
+            // update user info for image
           axios.patch(`http://127.0.0.1:8000/api/v1/user/${this.getUserId}`, this.formData, {headers:{
               'Content-type':'multipart/form-data'
             }}),
+            // update user info for other info
           axios.patch(`http://127.0.0.1:8000/api/v1/user/${this.getUserId}`, {
             "email": this.user_info.email,
             "profile": {
@@ -125,8 +127,10 @@
         this.dialogVisible = true;
       },
       beforeAvatarUpload(file) {
+        // avatar upload
         const isJPG = file.type === 'image/jpeg';
         const isLt2M = file.size / 1024 / 1024 < 2;
+        // check if file is jpg and less than 2M
         if (!isJPG) {
           this.$message.error('The picture should be a JPEG file');
         }

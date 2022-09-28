@@ -215,6 +215,7 @@
         <!--            </div>-->
         <!--          </el-main>-->
         <!--        </el-col>-->
+        <!-- chapter list-->
         <el-col>
           <div v-for="(chapter, index) in book_info.chapter" class="block" v-bind="chapter">
             <a
@@ -245,6 +246,7 @@ export default {
     }
   },
   beforeMount() {
+    // get book info
     axios.get(`http://127.0.0.1:8000/api/v1/book/${this.$route.params.id}`)
         .then((response) => {
           console.log(response.data)

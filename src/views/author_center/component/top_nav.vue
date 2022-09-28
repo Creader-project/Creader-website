@@ -91,11 +91,14 @@
         this.defaultActiveIndex = index;
       },
       fetchNavData() {
+        // variable
         let cur_path = this.$route.path; //Get current router path
         let routers = this.$router.options.routes; // Get router object
         let nav_type = "", nav_name = "";
+        // Get the current router object
         for (var i = 0; i < routers.length; i++) {
           let children = routers[i].children;
+          // If the current router has children, traverse the children
           if (children) {
             for (let j = 0; j < children.length; j++) {
               if (children[j].path === cur_path) {
@@ -103,7 +106,7 @@
                 nav_name = routers[i].name;
                 break;
               }
-              // 如果该菜单下还有子菜单
+              // If there is children in the dropdown
               if (children[j].children) {
                 let grandChildren = children[j].children;
                 for (let z = 0; z < grandChildren.length; z++) {

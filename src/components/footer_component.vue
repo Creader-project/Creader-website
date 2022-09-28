@@ -2,6 +2,7 @@
   <footer class="section">
     <div class="container">
       <div class="columns is-multiline" style="border-bottom: 1px solid #dee2e6;">
+        <!-- Logo -->
         <div class="column is-3 mb-5">
           <a class="mb-4 is-inline-block" href="#">
             Creader
@@ -25,6 +26,7 @@
             </a>
           </div>
         </div>
+        <!-- Links -->
         <div class="column is-9">
           <div class="columns is-multiline">
             <div class="column is-6 is-3-desktop mb-5">
@@ -66,6 +68,7 @@
           </div>
         </div>
       </div>
+      <!-- Bottom -->
       <div class="pt-5 has-text-centered">
         <p>All rights reserved © TheBookShelf Limited 2021</p>
       </div>
@@ -78,7 +81,9 @@ export default {
   name: "footer_component",
 
   methods: {
+
     toRouter(dest) {
+      // to router destination
       this.$router.push({name: dest});
     }
   }

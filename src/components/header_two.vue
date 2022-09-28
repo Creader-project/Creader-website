@@ -1,6 +1,7 @@
 <template>
   <nav class="navbar is-primary py-4">
     <div class="container is-fluid">
+      <!-- Brand -->
       <div class="navbar-brand">
         <a class="navbar-item" href="#">
           <img alt="" class="image" width="96px">
@@ -11,6 +12,7 @@
           <span aria-hidden="true">Ranking</span>
         </a>
       </div>
+      <!-- Menu -->
       <div class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item"><router-link to="/">Home</router-link></a>
@@ -19,7 +21,7 @@
         </div>
         <div class="navbar-item">
           <el-input
-              class="input " placeholder="请输入内容"
+              class="input " placeholder="Please insert your search keyword"
               style="background-color: #00D1B2; border: none"
               type="search"
           >
@@ -28,12 +30,14 @@
             </template>
           </el-input>
         </div>
+        <!-- User without login -->
         <div v-if="!this.$store.state.token.access_token" class="navbar-item">
           <div class="buttons">
             <a class="button" @click="login">Sign In</a>
             <a class="button" @click="register">Sign Up</a>
           </div>
         </div>
+        <!-- User with login -->
         <div v-else class="navbar-item">
           <div class="buttons">
             <a class="button" href="#">
@@ -72,6 +76,7 @@ export default {
     }
   },
   computed: {
+    // check if logged in
     checkLogin() {
       if (this.$store.state.token.access_token) {
         this.login_is = true;

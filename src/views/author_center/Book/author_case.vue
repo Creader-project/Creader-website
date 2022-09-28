@@ -27,6 +27,7 @@
     },
     methods: {
       getBook() {
+        // get all book info for author
         getAuthorBook().then((response) => {
           this.bookInfo = response.data;
         }).catch(error => {

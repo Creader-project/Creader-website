@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- section title -->
     <section class="hero">
       <div class="hero-body">
         <p class="title">
@@ -7,6 +8,7 @@
         </p>
       </div>
     </section>
+    <!-- section content -->
     <div class="columns is-centered" style="padding: 20px">
       <div class="column is-three-quarters">
         <form>
@@ -94,6 +96,7 @@
         </form>
       </div>
     </div>
+    <!-- plan -->
     <div class="columns">
       <div v-for="plan in sub_plan" v-bind:key="plan.id" class="column">
         <div class="card">

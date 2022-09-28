@@ -4,6 +4,7 @@
       <i class="icon el-icon-s-fold" v-show="!collapsed" title="Collapse"/>
       <i class="icon el-icon-s-unfold" v-show="collapsed" title="Expand"/>
     </div>
+    <!-- Menu component -->
     <el-menu router :default-active="$route.path" :collapse="collapsed" ref="leftNavigation">
       <template v-for="(issue, index) in $router.options.routes">
         <template v-if="issue.name === $store.state.leftNavState">
@@ -54,12 +55,17 @@
         let subMenuIndex = '';//index for submenu
         let openSubmenu = false; //default for submenu is close
         for (let i = 0; i < routers.length; i++) {
+          // find the router object which has the same name with current url path
           let children = routers[i].children;
+          // if the router object has children, then find the
+          // children object which has the same name with current url path
           if (children) {
             for (let j = 0; j < children.length; j++) {
               if (children[j].path === cur_path) {
                 break;
               }
+              // if the children object is same with the leaf object, then find the
+              // leaf object which has the same name with current url path
               if (children[j].children && !children[j].leaf) {
                 let grandChildren = children[j].children;
                 for (let z = 0; z < grandChildren.length; z++) {

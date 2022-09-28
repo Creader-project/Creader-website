@@ -2,6 +2,7 @@
   <div class="chapter-container">
     <header class="chapter-header">
       <div class="header-top">
+        <!-- breadcrumb -->
         <div class="breadcrumb_set">
           <!--          <el-breadcrumb separator="/" v-bind="chapter">-->
           <!--            <el-breadcrumb-item><span>Main</span></el-breadcrumb-item>-->
@@ -10,6 +11,7 @@
           <!--            <el-breadcrumb-item><span>{{ chapter.id + 1 }}</span></el-breadcrumb-item>-->
           <!--          </el-breadcrumb>-->
         </div>
+        <!-- text body setting -->
         <div class="text-setting">
           <el-select v-model="choices.font_size" style="width: 100px" placeholder="Size">
             <el-option label="16pt" value="16"/>
@@ -43,6 +45,7 @@
           </el-select><!---->
         </div>
       </div>
+      <!-- chapter function -->
       <div class="chapter-info">
         <h2 class="chapter-name">{{ chapter.title }}</h2>
         <div class="button-group">
@@ -57,6 +60,7 @@
         </div>
       </div>
     </header>
+    <!-- chapter content -->
     <el-main>
       <div v-bind:style="changeStyle()" class="chapter-body" v-for="(item,i) in context.chapterContent" :key="i">
         <p v-html="item" class="default_text">
@@ -64,6 +68,7 @@
         <br/>
       </div>
     </el-main>
+    <!-- chapter footer -->
     <div class="chapter-info">
       <div class="button-group">
         <el-button-group>
@@ -133,6 +138,7 @@ export default {
       }
     },
     getChapterDetail(url) {
+      // get chapter detail
       let content = []
       axios.get(url)
           .then((response) => {
@@ -150,6 +156,7 @@ export default {
           });
     },
     getChapterList() {
+      // get chapter list
       axios.get(`http://127.0.0.1:8000/api/v1/book/${this.$props.book_id}/chapter`)
           .then((response) => {
             this.listOfChapter = response.data
@@ -159,6 +166,7 @@ export default {
           });
     },
     goToNext() {
+      // go to next chapter
       let nextChapter = parseInt(this.$props.position) + 1;
       console.log(this.$props.url);
       console.log(this.listOfChapter[nextChapter].url);
@@ -183,6 +191,7 @@ export default {
       // }
     },
     goToPrevious() {
+      // go to previous chapter
       // console.log('hi');
       console.log(this.$props.position);
       if (this.$props.position === (0)) {
@@ -207,11 +216,13 @@ export default {
     }
   },
   async beforeRouteUpdate(to, from, next) {
+    // react to route changes...
     this.chapter_url = this.listOfChapter[this.$]
     this.getChapterDetail(this.$props.url);
     console.log(to.$props);
   },
   beforeRouteLeave(to, from, next){
+    // before leaving the route
     console.log('before route leave');
     console.log(this.$props)
   }
